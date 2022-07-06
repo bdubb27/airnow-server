@@ -1,12 +1,20 @@
+require('./config')
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const PORT = process.env.PORT || 3001
+const { getObservations } = require('./lib/sql-service.js')
 
 app.use(cors())
 
-app.get('/api/observations', (req, res) => {
-  res.json({ message: 'Hello from api/observations!' })
+app.get('/api/observations', async (req, res) => {
+  console.log('/api/observations was called...');
+  try {
+    let data = await getObservations(req.query)
+    res.setHeader('Content-Type', 'application/json')
+    res.send(data)
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 app.get('*', (req, res) => {
