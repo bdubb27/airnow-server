@@ -1,0 +1,25 @@
+{
+  "name": "airnow-server",
+  "version": "1.0.0",
+  "description": "a Node.js server that gets data from AirNow.gov and makes it available via an API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdubb27/airnow-server.git"
+  },
+  "keywords": [],
+  "author": "Blake Watts <bdubb27@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bdubb27/airnow-server/issues"
+  },
+  "homepage": "https://github.com/bdubb27/airnow-server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
+  }
+}
