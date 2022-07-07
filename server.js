@@ -20,15 +20,15 @@ app.get('/api/observations', async (req, res) => {
 app.get('/api/observations/get', async (req, res) => {
   let airNowFile = new AirNowFile('HourlyAQObs', new Date().getUTCMinutes() < 35 ? -2 : -1)
   try {
-    let data = await airNowFile.getFile()
+    let message = await airNowFile.getFile()
     res.setHeader('Content-Type', 'application/json')
-    res.send(airNowFile.message)
+    res.send(message)
   } catch (error) {
     console.log(error)
   }
 })
 
-app.get('/api/observations/add', async (req, res) => {
+app.post('/api/observations/add', async (req, res) => {
   let airNowFile = new AirNowFile('HourlyAQObs', new Date().getUTCMinutes() < 35 ? -2 : -1)
   try {
     let data = await airNowFile.parseFile()
