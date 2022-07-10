@@ -11,7 +11,7 @@ app.get('/api/observations', async (req, res) => {
   try {
     let data = await getObservations(req.query)
     res.setHeader('Content-Type', 'application/json')
-    res.send(data)
+    res.send(data[0])
   } catch (error) {
     console.log(error)
   }
