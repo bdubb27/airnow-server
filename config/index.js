@@ -1,8 +1,9 @@
-require('dotenv-finder')
-require('dotenv').config({ path: findDotEnvFile() })
-require('./server.config.js')
-require('./mysql-db.config.js')
 const mysql = require('mysql2/promise')
-const pool = mysql.createPool(MYSQL_DB_OPTS)
+const pool = mysql.createPool({
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DB,
+})
 
-module.exports = { mysql, pool, PORT }
+module.exports = { mysql, pool }

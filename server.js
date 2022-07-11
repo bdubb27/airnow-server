@@ -1,4 +1,3 @@
-const { PORT } = require('./config')
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -44,6 +43,6 @@ app.get('*', (req, res) => {
   res.json({ message: '404' })
 })
 
-app.listen(PORT, () => {
-  console.log(`air-quality-info server listening on ${PORT}`)
+app.listen(process.env.PORT, () => {
+  console.log(`air-quality-info server listening on ${process.env.PORT}`)
 })
