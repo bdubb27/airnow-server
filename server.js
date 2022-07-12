@@ -1,10 +1,7 @@
 const express = require('express')
 const app = express()
-const cors = require('cors')
 const { getObservations } = require('./lib/sql-service.js')
 const { AirNowFile } = require('./lib/file-getter-service.js')
-
-app.use(cors())
 
 app.get('/api/observations', async (req, res) => {
   try {
