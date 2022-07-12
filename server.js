@@ -40,6 +40,6 @@ app.get('*', (req, res) => {
   res.json({ message: '404' })
 })
 
-app.listen(process.env.PORT, () => {
-  console.log(`air-quality-info server listening on ${process.env.PORT}`)
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`air-quality-info server listening on ${process.env.PORT || 3000}`)
 })
