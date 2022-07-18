@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
-const { getObservations } = require('./lib/sql-service.js')
-const { AirNowFile } = require('./lib/file-getter-service.js')
+const { AirNowFile, getObservations, setCities } = require('./lib')
 
 app.get('/api/observations', async (req, res) => {
   try {
@@ -31,6 +30,16 @@ app.post('/api/observations/add', async (req, res) => {
     let dres = await airNowFile.insert(data)
     res.setHeader('Content-Type', 'application/json')
     res.send(dres)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+app.patch('/api/aqsid/cities', async (req, res) => {
+  try {
+    let message = await setCities()
+    res.setHeader('Content-Type', 'application/json')
+    res.send(message)
   } catch (error) {
     console.log(error)
   }
